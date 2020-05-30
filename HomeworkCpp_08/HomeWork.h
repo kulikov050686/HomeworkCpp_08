@@ -4,10 +4,14 @@
 #include <cmath>
 #include <Windows.h>
 #include "CubicEquation.h"
+#include "Menu/MenuController.h"
 
 class HomeWork
 {
 private:
+
+	/// Астрономическая единица
+	double const AU = 1.496E11;
 
 	/// Определяет максимальное из двух чисел
 	double Max(double x, double y);

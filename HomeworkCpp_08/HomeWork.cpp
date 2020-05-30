@@ -38,6 +38,123 @@ void HomeWork::Task1()
 	}
 }
 
+void HomeWork::Task2()
+{
+	system("cls");
+	setlocale(LC_ALL, "Russian.utf8");
+
+	int32_t numberOfLockHandles; // Количество ручек замка
+	int32_t numberOfPositions; // Количество положений
+	double t; // Количество времени на одну комбинацию
+
+	std::cout << "Введите количество ручек замка: ";
+	std::cin >> numberOfLockHandles;
+	std::cout << "Введите количество положений ручки: ";
+	std::cin >> numberOfPositions;
+	std::cout << "Введите время для одной комбинации: ";
+	std::cin >> t;
+
+	if (numberOfLockHandles > 0 && numberOfPositions && t > 0)
+	{
+		std::cout << "Время которое требуется для перебора всех комбинаций: " << t * std::pow(numberOfPositions, numberOfLockHandles) << std::endl;
+	}
+	else
+	{
+		std::cout << "Ошибка ввода данных!!!" << std::endl;
+	}
+}
+
+void HomeWork::Task3()
+{
+	system("cls");
+	setlocale(LC_ALL, "Russian.utf8");
+
+	double health; // здоровье 
+	double magicResistance; // сопротивляемость к магии 
+	double impactPower; // мощность удара 
+
+	std::cout << "Введите уровень здоровья орка (от 0 до 1): ";
+	std::cin >> health;
+	std::cout << "Введите сопротивляемость к магии у орка (от 0 до 1): ";
+	std::cin >> magicResistance;
+
+	if (0 < health && health <= 1 && 0 < magicResistance && magicResistance <= 1)
+	{
+		if (magicResistance != 1)
+		{
+			while (health > 0)
+			{
+				std::cout << "Введите мощность водяного шара (от 0 до 1): ";
+				std::cin >> impactPower;
+
+				if (0 < impactPower && impactPower <= 1)
+				{
+					std::cout << "Наносимый урон: " << (1 - magicResistance) * impactPower << std::endl;
+
+					if (health > (1 - magicResistance) * impactPower)
+					{
+						health = health - (1 - magicResistance) * impactPower;
+					}
+					else
+					{
+						health = 0;
+					}
+
+					std::cout << "Очки здоровья: " << health << std::endl;
+				}
+				else
+				{
+					std::cout << "Ошибка ввода данных!!!" << std::endl;
+				}
+			}
+
+			std::cout << "Победа!!!" << std::endl;
+		}
+		else
+		{
+			std::cout << "Орка победить невозможно!!!" << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "Ошибка ввода данных!!!" << std::endl;
+	}		
+}
+
+void HomeWork::Task4()
+{
+	system("cls");
+	setlocale(LC_ALL, "Russian.utf8");
+
+	double const k = 5; // размер ребра кубика
+
+	double a; // ширина бруска
+	double b; // высота бруска
+	double c; // длина бруска
+
+	std::cout << "Введите ширину бруска: ";
+	std::cin >> a;
+	std::cout << "Введите высоту бруска: ";
+	std::cin >> b;
+	std::cout << "Введите длину бруска: ";
+	std::cin >> c;
+
+	if (a > 0 && b > 0 && c > 0)
+	{
+		double numberOfCubes = floor(a / k) * floor(b / k) * floor(c / k);
+
+		std::cout << "Из этого буска можно изготовить: " << numberOfCubes << " кубиков." << std::endl;
+
+		double n = floor(std::pow(numberOfCubes, 1.0 / 3.0));
+
+		std::cout << "Из них можно составить набор из " << std::pow(n, 3) << " кубиков." << std::endl;
+	}
+	else
+	{
+		std::cout << "Ошибка ввода данных!!!" << std::endl;
+	}	
+}
+
 void HomeWork::Task5()
 {
 	system("cls");
@@ -89,6 +206,70 @@ void HomeWork::Task5()
 	else
 	{
 		std::cout << "Ошибка ввода данных!!!" << std::endl;
+	}
+}
+
+void HomeWork::Task6()
+{
+	system("cls");
+	setlocale(LC_ALL, "Russian.utf8");
+
+	double positionX = 0;
+	double positionY = 0;
+	bool exit = false;
+	std::string key;
+
+	std::cout << "Программа управления марсоходом." << std::endl;
+	std::cout << "---------------------------------------" << std::endl;
+	std::cout << "Команды:" << std::endl;
+	std::cout << "W - движение на север" << std::endl;
+	std::cout << "S - движение на юг" << std::endl;
+	std::cout << "A - движение на запад" << std::endl;
+	std::cout << "D - движение на восток" << std::endl;
+	std::cout << "С - выход из программы" << std::endl;
+	std::cout << "---------------------------------------" << std::endl;
+
+	while (!exit)
+	{
+		std::cout << "Марсоход находится на позиции (" << positionX << "," << positionY << ") введите команду :";
+		std::getline(std::cin, key);
+
+		if (key == "w" || key == "W")
+		{
+			if (positionY < 20)
+			{
+				positionY++;
+			}
+		}
+		else if (key == "s" || key == "S")
+		{
+			if (positionY > 0)
+			{
+				positionY--;
+			}
+		}
+		else if (key == "a" || key == "A")
+		{
+			if (positionX > 0)
+			{
+				positionX--;
+			}
+		}
+		else if (key == "d" || key == "D")
+		{
+			if (positionX < 15)
+			{
+				positionX++;
+			}
+		}
+		else if (key == "c" || key == "C")
+		{
+			exit = true;
+		}
+		else
+		{
+			std::cout << "Такой команды не существует!!!" << std::endl;
+		}
 	}
 }
 
@@ -266,11 +447,68 @@ void HomeWork::Task11()
 
 void HomeWork::Run()
 {
-	//Task1();
-	Task5();
-	//Task7();
-	//Task8();
-	//Task9();
-	//Task10();
-	//Task11();
+	system("cls");
+	setlocale(LC_ALL, "Russian.utf8");
+
+	bool exit = false;
+	std::string text = "Выберите пункт меню";
+	std::string items[12] = { "Задача 1",
+							  "Задача 2",
+							  "Задача 3",
+							  "Задача 4",
+							  "Задача 5",
+							  "Задача 6",
+							  "Задача 7",
+							  "Задача 8",
+							  "Задача 9",
+							  "Задача 10",
+							  "Задача 11",
+							  "Выход" };
+
+	MenuController menu(items, 12);
+
+	while (!exit)
+	{
+		switch (menu.selectedMenuItem(text))
+		{
+		case 0:
+			Task1();
+			break;
+		case 1:
+			Task2();
+			break;
+		case 2:
+			Task3();
+			break;
+		case 3:
+			Task4();
+			break;
+		case 4:
+			Task5();
+			break;
+		case 5:
+			Task6();
+			break;
+		case 6:
+			Task7();
+			break;
+		case 7:
+			Task8();
+			break;
+		case 8:
+			Task9();
+			break;
+		case 9:
+			Task10();
+			break;
+		case 10:
+			Task11();
+			break;
+		case 11:
+			exit = true;
+			break;
+		}
+
+		_getch();
+	}	
 }

@@ -151,12 +151,16 @@
     <ClCompile Include="CubicEquation.cpp" />
     <ClCompile Include="HomeWork.cpp" />
     <ClCompile Include="HomeworkCpp_08.cpp" />
+    <ClCompile Include="Menu\Menu.cpp" />
+    <ClCompile Include="Menu\MenuController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array\MyArray.h" />
     <ClInclude Include="Array\TemplateMyArray.h" />
     <ClInclude Include="CubicEquation.h" />
     <ClInclude Include="HomeWork.h" />
+    <ClInclude Include="Menu\Menu.h" />
+    <ClInclude Include="Menu\MenuController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
