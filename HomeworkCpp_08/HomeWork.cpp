@@ -214,7 +214,7 @@ void HomeWork::Task6()
 	system("cls");
 	setlocale(LC_ALL, "Russian.utf8");
 
-	double positionX = 0;
+	double positionX = AU;
 	double positionY = 0;
 	bool exit = false;
 	std::string key;
@@ -236,31 +236,22 @@ void HomeWork::Task6()
 
 		if (key == "w" || key == "W")
 		{
-			if (positionY < 20)
-			{
-				positionY++;
-			}
+			positionY++;
 		}
 		else if (key == "s" || key == "S")
 		{
-			if (positionY > 0)
-			{
-				positionY--;
-			}
+			positionY--;
 		}
 		else if (key == "a" || key == "A")
 		{
-			if (positionX > 0)
+			if (positionX > AU)
 			{
 				positionX--;
 			}
 		}
 		else if (key == "d" || key == "D")
 		{
-			if (positionX < 15)
-			{
-				positionX++;
-			}
+			positionX++;			
 		}
 		else if (key == "c" || key == "C")
 		{
